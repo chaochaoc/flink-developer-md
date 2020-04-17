@@ -183,6 +183,7 @@ dataStream = tbEnv.toRetractStream(table, TypeInformation.of(
 ```java
 tbEnv.connect(
   new Sdb()
+    .version("3.4")									   // Version of sdb
     .hosts("localhost:11810")                          // Connection address of sdb
     .username("sdbadmin")                              // Username
     .password("sdbadmin")                              // Password
@@ -214,6 +215,7 @@ tbEnv.connect(
 ```java
 tbEnv.connect(
   new Sdb() 
+    .version("3.4")									   // Version of sdb
     .hosts("localhost:11810")                          // Connection address of sdb
     .username("sdbadmin")                              // Username
     .password("sdbadmin")                              // Password
@@ -288,9 +290,10 @@ tbEnv.sqlUpdate(
     "  account STRING, " +                                 // Account number
     "  trans_name STRING, " +                              // Name of transaction
     "  money DECIMAL(10, 2), " +                           // Transaction amount
-    "  `timestamp` TIMESTAMP(3)" +                         // Transaction time
+    "  create_time TIMESTAMP(3)" +                         // Transaction time
     ") WITH (" +
     "  'connector.type' = 'sequoiadb', " +                 // Connection media type
+    "  'connector.version' = '3.4', " +					   // Version of SequoiaDB
     "  'connector.hosts' = 'localhost:11810', " +          // Connection address
     "  'connector.username' = 'sdbadmin', " +              // Username
     "  'connector.password' = 'sdbadmin', " +              // Password
@@ -321,6 +324,7 @@ tbEnv.sqlUpdate(
     "  `total_sum` DECIMAL(10, 2)" +                    // Transaction sum
     ") WITH (" +
     "  'connector.type' = 'sequoiadb', " +
+    "  'connector.version' = '3.4', " +					// Version of SequoiaDB
     "  'connector.hosts' = 'localhost:11810', " +
     "  'connector.username' = 'sdbadmin', " +
     "  'connector.password' = 'sdbadmin', " +
@@ -382,6 +386,7 @@ tbEnv.sqlUpdate(
 // Connection table via descriptor
 tbEnv.connect(
    new Sdb()
+    .version("3.4")									        // Version of sdb
     .hosts("localhost:11810")                               // Connection address of sdb
     .username("sdbadmin")                                   // Username
     .password("sdbadmin")                                   // Password
